@@ -24,7 +24,8 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 700) {
         this.x = -500;
     }
-    if ((player.y < this.y) & (this.x > player.x & this.x < player.x + 101)) {
+    if (player.y < this.y && player.y + 83 > this.y && this.x > player.x && this.x < player.x + 101) {
+    //if (this.x < player.x + player.x +101 && this.x + 101 > player.x && this.y < player.y + 83 && this.y + 83 > player.y) {
         player.x = 200;
         player.y = 380;
     }
@@ -36,6 +37,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+//Create SlowwEnemy subclass of Enemy
 var SlowEnemy = function (x, y) {
     Enemy.call(this,x, y);
 };
@@ -66,7 +68,6 @@ FastEnemy.prototype.speed = 5;
 // a handleInput() method.
 var Player = function () {
     this.sprite = 'images/char-boy.png';
-    console.log('TEST1');
     this.x = 200;
     this.y = 380;
 }
@@ -76,6 +77,8 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     
 }
+
+//Update location based on keyboard inputs
 Player.prototype.handleInput = function(key) { 
       console.log(key);
       this.render();
@@ -120,12 +123,11 @@ var midMed1 = new MedEnemy(0, 133)
 var midFast1 = new FastEnemy (-100, 133);
 var botFast1 = new FastEnemy (-500, 216);
 
-//var allEnemies = [topSlow1, midMed1]
-var allEnemies = [topSlow1, topMed1, midMed1, topFast1, midFast1, botFast1];
+var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botFast1];
 console.log(allEnemies);
 var player = new Player();
 console.log(player);
-//player.render();
+
 
 
 // This listens for key presses and sends the keys to your
