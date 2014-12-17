@@ -1,6 +1,3 @@
-//initialx = 0;
-
-
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
@@ -19,11 +16,18 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    // The speed of the enemy is dependent on the speed multiplier specific to each enemy subclass
     xmove = dt * 100 * this.speed;
     this.x = this.x + xmove;
+    
+    // Once moving off the screen a sufficient distance to the right,  it will be moved back to the left of the screen
     if (this.x > 700) {
         this.x = -300;
     }
+
+    // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
+    // to the starting location.
     if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 101) {
         player.x = 200;
         player.y = 380;
@@ -36,7 +40,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-//Create SlowwEnemy subclass of Enemy
+//Create the slowest subclass of Enemy. 
 var SlowEnemy = function (x, y) {
     Enemy.call(this,x, y);
 };
@@ -44,7 +48,7 @@ SlowEnemy.prototype = Object.create(Enemy.prototype);
 SlowEnemy.prototype.constructor = SlowEnemy;
 SlowEnemy.prototype.speed = 1;
 
-
+//Create medium speed subclass of Enemy.
 var MedEnemy = function (x, y) {
     Enemy.call(this, x, y);
 };
@@ -52,6 +56,7 @@ MedEnemy.prototype = Object.create(Enemy.prototype);
 MedEnemy.prototype.constructor = MedEnemy;
 MedEnemy.prototype.speed = 2;
 
+//Create the fastest subblass of Enemy.
 var FastEnemy = function(x, y) {
     Enemy.call(this, x, y);
 };
@@ -77,9 +82,8 @@ Player.prototype.render = function() {
     
 }
 
-//Update location based on keyboard inputs
+//Update location based on keyboard inputs and prevents the player from going off the side of the canvas
 Player.prototype.handleInput = function(key) { 
-      console.log(key);
       this.render();
     switch(key) {
         case 'left':
@@ -112,8 +116,8 @@ Player.prototype.handleInput = function(key) {
 
  
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Each enemy has a variable starting location. The variation in x axis starting locations creates
+// the enemy asynchrony. 
 
 var topSlow1 = new SlowEnemy (0, 50);
 var topMed1 = new MedEnemy (-200, 50);
@@ -122,10 +126,12 @@ var midMed1 = new MedEnemy(0, 133)
 var midFast1 = new FastEnemy (-100, 133);
 var botFast1 = new FastEnemy (-500, 216);
 
+// Place all enemy objects in an array called allEnemies
 var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botFast1];
-console.log(allEnemies);
+
+// Place the player object in a variable called player
 var player = new Player();
-console.log(player);
+
 
 
 
