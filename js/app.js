@@ -124,10 +124,11 @@ var topMed1 = new MedEnemy (-200, 50);
 var topFast1 = new FastEnemy (-300, 50);
 var midMed1 = new MedEnemy(0, 133)
 var midFast1 = new FastEnemy (-100, 133);
+var botSlow1 = new SlowEnemy (-300, 216)
 var botFast1 = new FastEnemy (-500, 216);
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botFast1];
+var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botSlow1, botFast1];
 
 // Place the player object in a variable called player
 var player = new Player();
