@@ -1,4 +1,5 @@
-// Enemies our player must avoid
+// Enemies our player must avoid. Enemy takes two arguments which specify where on the screen
+// the enemy will be created.
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -6,7 +7,10 @@ var Enemy = function(x, y) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x =x;
+    this.x = x;
+
+    // Saves the initial x location for later reference
+    this.initialx = x;
     this.y = y;
 }
 
@@ -21,9 +25,9 @@ Enemy.prototype.update = function(dt) {
     xmove = dt * 100 * this.speed;
     this.x = this.x + xmove;
     
-    // Once moving off the screen a sufficient distance to the right,  it will be moved back to the left of the screen
+    // Once moving off the screen a sufficient distance to the right,  it will be moved back to its initial x axis location
     if (this.x > 700) {
-        this.x = -300;
+        this.x = this.initialx;
     }
 
     // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
@@ -72,6 +76,7 @@ FastEnemy.prototype.speed = 3;
 // a handleInput() method.
 var Player = function () {
     this.sprite = 'images/char-boy.png';
+    // This sets the starting location for the player    
     this.x = 200;
     this.y = 380;
 }
@@ -119,12 +124,12 @@ Player.prototype.handleInput = function(key) {
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
 // the enemy asynchrony. 
 
-var topSlow1 = new SlowEnemy (0, 50);
+var topSlow1 = new SlowEnemy (-75, 50);
 var topMed1 = new MedEnemy (-200, 50);
 var topFast1 = new FastEnemy (-300, 50);
-var midMed1 = new MedEnemy(0, 133)
-var midFast1 = new FastEnemy (-100, 133);
-var botSlow1 = new SlowEnemy (-300, 216)
+var midMed1 = new MedEnemy(-175, 133);
+var midFast1 = new FastEnemy (-150, 133);
+var botSlow1 = new SlowEnemy (-300, 216);
 var botFast1 = new FastEnemy (-500, 216);
 
 // Place all enemy objects in an array called allEnemies
