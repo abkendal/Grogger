@@ -1,14 +1,16 @@
+//initialx = 0;
+
 
 // Enemies our player must avoid
-var Enemy = function(yloc) {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = 100;
-    this.y = yloc;
+    this.x =x;
+    this.y = y;
 }
 
 // Update the enemy's position, required method for game
@@ -20,7 +22,11 @@ Enemy.prototype.update = function(dt) {
     xmove = dt * 100 * this.speed;
     this.x = this.x + xmove;
     if (this.x > 700) {
-        this.x = -100;
+        this.x = -500;
+    }
+    if ((player.y < this.y) & (this.x > player.x & this.x < player.x + 101)) {
+        player.x = 200;
+        player.y = 380;
     }
 }
 
@@ -30,26 +36,27 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-var SlowEnemy = function (yloc) {
-    Enemy.call(this, yloc);
+var SlowEnemy = function (x, y) {
+    Enemy.call(this,x, y);
 };
 SlowEnemy.prototype = Object.create(Enemy.prototype);
 SlowEnemy.prototype.constructor = SlowEnemy;
 SlowEnemy.prototype.speed = 1;
 
-var MedEnemy = function (yloc) {
-    Enemy.call(this, yloc);
+
+var MedEnemy = function (x, y) {
+    Enemy.call(this, x, y);
 };
 MedEnemy.prototype = Object.create(Enemy.prototype);
 MedEnemy.prototype.constructor = MedEnemy;
 MedEnemy.prototype.speed = 2;
 
-var FastEnemy = function(yloc) {
-    Enemy.call(this, yloc);
+var FastEnemy = function(x, y) {
+    Enemy.call(this, x, y);
 };
 FastEnemy.prototype = Object.create(Enemy.prototype);
 FastEnemy.prototype.constructor = FastEnemy;
-FastEnemy.prototype.speed = 3;
+FastEnemy.prototype.speed = 5;
 
 
 
@@ -106,11 +113,15 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var topFast1 = new FastEnemy (50);
-var midFast1 = new FastEnemy (133);
-var botFast1 = new FastEnemy (216);
+var topSlow1 = new SlowEnemy (0, 50);
+var topMed1 = new MedEnemy (-200, 50);
+var topFast1 = new FastEnemy (-300, 50);
+var midMed1 = new MedEnemy(0, 133)
+var midFast1 = new FastEnemy (-100, 133);
+var botFast1 = new FastEnemy (-500, 216);
 
-var allEnemies = [topFast1, midFast1, botFast1];
+//var allEnemies = [topSlow1, midMed1]
+var allEnemies = [topSlow1, topMed1, midMed1, topFast1, midFast1, botFast1];
 console.log(allEnemies);
 var player = new Player();
 console.log(player);
