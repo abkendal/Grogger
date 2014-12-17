@@ -14,6 +14,10 @@
  * a little simpler to work with.
  */
 
+ //Creates some global variables for lives and score. 
+var playerLives = 0;
+var playerScore = 0;
+
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -149,6 +153,10 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
         allEnemies.forEach(function(enemy) {
+            
+            // Clears the top of the canvas 
+            ctx.clearRect(0, 0, canvas.width, 50);
+            
             enemy.render();
         });
 
@@ -160,7 +168,8 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        playerLives = 3; 
+        playerScore = 0;
     }
 
     /* Go ahead and load all of the images we know we're going to need to

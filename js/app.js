@@ -1,17 +1,15 @@
 // Enemies our player must avoid. Enemy takes two arguments which specify where on the screen
 // the enemy will be created.
 var Enemy = function(x, y) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    
     this.x = x;
+    this.y = y;
 
     // Saves the initial x location for later reference
     this.initialx = x;
-    this.y = y;
 }
 
 // Update the enemy's position, required method for game
@@ -24,8 +22,8 @@ Enemy.prototype.update = function(dt) {
     // The speed of the enemy is dependent on the speed multiplier specific to each enemy subclass
     xmove = dt * 100 * this.speed;
     this.x = this.x + xmove;
-    
-    // Once moving off the screen a sufficient distance to the right,  it will be moved back to its initial x axis location
+
+    // Once moving off the screen,  the enemy will be moved back to its initial x location
     if (this.x > 700) {
         this.x = this.initialx;
     }
@@ -35,12 +33,18 @@ Enemy.prototype.update = function(dt) {
     if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 101) {
         player.x = 200;
         player.y = 380;
+        
+        playerLives = playerLives - 1;
+        if (playerLives === 0) {
+            gameover();
+        }
+        console.log("You have " + playerLives + " lives.");
+        console.log(playerScore);
     }
 }
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
@@ -153,3 +157,9 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function gameover() {
+    playerLives = 3;
+    playerScore = 0;
+    lastTime = Date.now();
+}
