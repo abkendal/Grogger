@@ -22,10 +22,9 @@ Enemy.prototype.update = function(dt) {
     xmove = dt * 100 * this.speed;
     this.x = this.x + xmove;
     if (this.x > 700) {
-        this.x = -500;
+        this.x = -300;
     }
-    if (player.y < this.y && player.y + 83 > this.y && this.x > player.x && this.x < player.x + 101) {
-    //if (this.x < player.x + player.x +101 && this.x + 101 > player.x && this.y < player.y + 83 && this.y + 83 > player.y) {
+    if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 101) {
         player.x = 200;
         player.y = 380;
     }
@@ -58,7 +57,7 @@ var FastEnemy = function(x, y) {
 };
 FastEnemy.prototype = Object.create(Enemy.prototype);
 FastEnemy.prototype.constructor = FastEnemy;
-FastEnemy.prototype.speed = 5;
+FastEnemy.prototype.speed = 3;
 
 
 
