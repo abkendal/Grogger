@@ -34,9 +34,12 @@ Enemy.prototype.update = function(dt) {
         player.x = 200;
         player.y = 380;
         
+        // Lose a life every time the player collides with an enemy
         playerLives = playerLives - 1;
+        
+        // When the player has no more lives, apply the game over state.    
         if (playerLives === 0) {
-            gameover();
+            gameover.render();
         }
         console.log("You have " + playerLives + " lives.");
         console.log(playerScore);
@@ -123,6 +126,38 @@ Player.prototype.handleInput = function(key) {
     }
 }
 
+var Lives = function () {
+    this.x = 400;
+    this.y = 50;
+}
+
+//Lives.prototype.update = function (){};
+Lives.prototype.render = function (num) {
+        if (num === 0) {
+        this.sprite = 'images/0.png';
+    }
+    else if (num === 1) {
+        this.sprite = 'images/1.png';
+    }
+    else if (num === 2) {
+        this.sprite = 'images/2.png';
+    }
+    else if (num === 3) {
+        this.sprite = 'images/3.png';
+    }
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+var GameOver = function () {
+    this.x = 150;
+    this.y = 250;
+}
+
+GameOver.prototype.render = function () {
+    this.sprite = 'images/gameover.png';
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
  
 // Now instantiate your objects.
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
@@ -141,9 +176,8 @@ var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botSlow1, botFast1];
 
 // Place the player object in a variable called player
 var player = new Player();
-
-
-
+var lives = new Lives();
+var gameover = new GameOver();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -158,8 +192,8 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-function gameover() {
-    playerLives = 3;
-    playerScore = 0;
-    lastTime = Date.now();
+function endgame() {
+    //playerLives = 3;
+    //playerScore = 0;
+    //lastTime = Date.now();
 }

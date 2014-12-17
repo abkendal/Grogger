@@ -15,7 +15,7 @@
  */
 
  //Creates some global variables for lives and score. 
-var playerLives = 0;
+var playerLives = 3;
 var playerScore = 0;
 
 var Engine = (function(global) {
@@ -161,6 +161,12 @@ var Engine = (function(global) {
         });
 
         player.render();
+        lives.render(playerLives);
+        if (playerLives === 0){
+            gameover.render();
+            player.x = 200;
+            player.y= 380;
+        }
     }
 
     /* This function does nothing but it could have been a good place to
@@ -181,7 +187,12 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/0.png',
+        'images/1.png',
+        'images/2.png',
+        'images/3.png',
+        'images/gameover.png'
     ]);
     Resources.onReady(init);
 
