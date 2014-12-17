@@ -192,7 +192,8 @@ var Engine = (function(global) {
         'images/1.png',
         'images/2.png',
         'images/3.png',
-        'images/gameover.png'
+        'images/gameover.png',
+        'images/gameover2.png'
     ]);
     Resources.onReady(init);
 

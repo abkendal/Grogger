@@ -149,8 +149,8 @@ Lives.prototype.render = function (num) {
 };
 
 var GameOver = function () {
-    this.x = 150;
-    this.y = 250;
+    this.x = 55;
+    this.y = 200;
 }
 
 GameOver.prototype.render = function () {
