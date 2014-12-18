@@ -30,7 +30,7 @@ Enemy.prototype.update = function(dt) {
 
     // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
     // to the starting location.
-    if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 83) {
+    if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 42) {
         player.x = 200;
         player.y = 380;
         
@@ -165,7 +165,7 @@ GameOver.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// Creates a class for the gamewin display
+// Creates a class for the gamewin display.
 var GameWin = function () {
     this.x = 100;
     this.y = 180;
@@ -175,9 +175,11 @@ GameWin.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-var Key = function () {
-    this.x = -2;
-    this.y = 48;
+
+// Creates a key that must be obtained before being able to win the game.
+var Key = function (x, y) {
+    this.x = x;
+    this.y = y;
 }
 Key.prototype.render = function (){
     this.sprite = 'images/Key.png';
@@ -205,7 +207,7 @@ var player = new Player();
 var lives = new Lives();
 var gameover = new GameOver();
 var gamewin = new GameWin();
-var gamekey = new Key();
+var gamekey = new Key(-2, 48);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
