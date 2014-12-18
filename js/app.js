@@ -214,7 +214,7 @@ var lives = new Lives();
 var gameover = new GameOver();
 var gamewin = new GameWin();
 
-var randx = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+var randx = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
 console.log("randx"+randx);
 var keyx = -2 + (randx * 101);
 console.log("keyx:"+keyx);
