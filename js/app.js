@@ -30,7 +30,7 @@ Enemy.prototype.update = function(dt) {
 
     // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
     // to the starting location.
-    if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 101) {
+    if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 83) {
         player.x = 200;
         player.y = 380;
         
@@ -73,7 +73,7 @@ var FastEnemy = function(x, y) {
 };
 FastEnemy.prototype = Object.create(Enemy.prototype);
 FastEnemy.prototype.constructor = FastEnemy;
-FastEnemy.prototype.speed = 3;
+FastEnemy.prototype.speed = 2.5;
 
 
 
@@ -99,7 +99,6 @@ Player.prototype.render = function() {
 
 //Update location based on keyboard inputs and prevents the player from going off the side of the canvas
 Player.prototype.handleInput = function(key) { 
-      this.render();
     switch(key) {
         case 'left':
             this.x = this.x - 101;
@@ -126,6 +125,12 @@ Player.prototype.handleInput = function(key) {
             }
         default:
             break;
+    }
+    if (gamekey.y < this.y && gamekey.y + 83 > this.y && this.x + 83> gamekey.x && this.x < gamekey.x + 101) {
+    //if (this.x > key.x && key.x + 101 > this.x) {
+    //if (this.x === gamekey.x) {
+        keyObtained = 1;
+        console.log(keyObtained);
     }
 }
 
@@ -170,6 +175,15 @@ GameWin.prototype.render = function () {
     this.sprite = 'images/youwin.png';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
+
+var Key = function () {
+    this.x = 5;
+    this.y = 50;
+}
+Key.prototype.render = function (){
+    this.sprite = 'images/Key.png';
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
  
 // Now instantiate your objects.
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
@@ -186,11 +200,12 @@ var botFast1 = new FastEnemy (-500, 216);
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botSlow1, botFast1];
 
-// Place the player object in a variable called player
+
 var player = new Player();
 var lives = new Lives();
 var gameover = new GameOver();
 var gamewin = new GameWin();
+var gamekey = new Key();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -204,9 +219,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-function endgame() {
-    //playerLives = 3;
-    //playerScore = 0;
-    //lastTime = Date.now();
-}
