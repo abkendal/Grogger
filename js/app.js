@@ -126,9 +126,8 @@ Player.prototype.handleInput = function(key) {
         default:
             break;
     }
-    if (gamekey.y < this.y && gamekey.y + 83 > this.y && this.x + 83> gamekey.x && this.x < gamekey.x + 101) {
-    //if (this.x > key.x && key.x + 101 > this.x) {
-    //if (this.x === gamekey.x) {
+    console.log(this.x, this.y)
+    if (gamekey.y === this.y && gamekey.x === this.x) {
         keyObtained = 1;
         console.log(keyObtained);
     }
@@ -177,8 +176,8 @@ GameWin.prototype.render = function () {
 }
 
 var Key = function () {
-    this.x = 5;
-    this.y = 50;
+    this.x = -2;
+    this.y = 48;
 }
 Key.prototype.render = function (){
     this.sprite = 'images/Key.png';
@@ -199,6 +198,7 @@ var botFast1 = new FastEnemy (-500, 216);
 
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [topSlow1, midMed1, topFast1, midFast1, botSlow1, botFast1];
+//var allEnemies = [topSlow1];
 
 
 var player = new Player();
