@@ -3,4 +3,3 @@
 - Include multiple keys
 - Include gems that give bonus points
 - Show the score in the UI (top left corder?)
-- Make a version where the bugs in a given row all move at the same speed

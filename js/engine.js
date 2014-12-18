@@ -165,16 +165,13 @@ var Engine = (function(global) {
 
         // If the player runs out of lives, they will receive a Game Over and the game will end.
         if (playerLives === 0){
-            console.log(gameover.render)
-
             gameover.render();
             gameEnd=1;
-            player.x = 200;
-            player.y= 380;
+
         }
 
         // The player wins the game when they have obtained the key and are located in
-        // the top row. When the player wins they will receive a You Win and the
+        // the top row. When the player wins they will receive a victory screen and the
         // game will end.
         if (winTrue === 1 && keyObtained === 1){
             //debugger;
