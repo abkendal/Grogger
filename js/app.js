@@ -214,15 +214,12 @@ var lives = new Lives();
 var gameover = new GameOver();
 var gamewin = new GameWin();
 
+// Creates a random location on the track for the key to
+// be generated
 var randx = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
-console.log("randx"+randx);
 var keyx = -2 + (randx * 101);
-console.log("keyx:"+keyx);
-
 var randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-console.log("randy"+randy);
 var keyy = -35 + (randy * 83);
-console.log("keyy"+keyy);
 
 var gamekey = new Key(keyx, keyy);
 
