@@ -91,6 +91,8 @@ Player.prototype.update = function() {
 }
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    
+    // This checks to see if the player is in the top/winning row
     if (this.y < 40) {
         winTrue = 1;
     }
@@ -130,17 +132,18 @@ Player.prototype.handleInput = function(key) {
             break;
     }
     console.log(this.x, this.y)
+
+    // If the player can obtain the key by colliding with it
     if (gamekey.y === this.y && gamekey.x === this.x) {
         keyObtained = 1;
-        console.log(keyObtained);
     }
 }
 
+// Lives display class
 var Lives = function () {
     this.x = 400;
     this.y = 50;
 }
-
 //Lives.prototype.update = function (){};
 Lives.prototype.render = function (num) {
         if (num === 0) {
@@ -158,7 +161,7 @@ Lives.prototype.render = function (num) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Creates a class for the game over display
+// Game over display class
 var GameOver = function () {
     this.x = 55;
     this.y = 200;
@@ -168,7 +171,7 @@ GameOver.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// Creates a class for the gamewin display.
+// Game win display class
 var GameWin = function () {
     this.x = 100;
     this.y = 180;
@@ -210,7 +213,18 @@ var player = new Player();
 var lives = new Lives();
 var gameover = new GameOver();
 var gamewin = new GameWin();
-var gamekey = new Key(-2, 48);
+
+var randx = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+console.log("randx"+randx);
+var keyx = -2 + (randx * 101);
+console.log("keyx:"+keyx);
+
+var randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+console.log("randy"+randy);
+var keyy = -35 + (randy * 83);
+console.log("keyy"+keyy);
+
+var gamekey = new Key(keyx, keyy);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
