@@ -13,6 +13,8 @@ var playerLives = 3;
 var playerScore = 0;
 var winTrue = 0;
 var keyObtained = 0;
+var key2Obtained = 0;
+var key3Obtained = 0;
 var gameEnd = 0;
 
 var Engine = (function(global) {
@@ -153,8 +155,14 @@ var Engine = (function(global) {
          // Renders they key as long as it has not been obtained
         if (keyObtained === 0) {
             gamekey.render();
-        }   
-        
+        }
+        if (key2Obtained === 0) {
+            gamekey2.render();
+        }
+        if (key3Obtained === 0) {
+            gamekey3.render();
+        }
+
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
@@ -173,7 +181,7 @@ var Engine = (function(global) {
         // The player wins the game when they have obtained the key and are located in
         // the top row. When the player wins they will receive a victory screen and the
         // game will end.
-        if (winTrue === 1 && keyObtained === 1){
+        if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1){
             //debugger;
             gamewin.render();
             gameEnd = 1;
