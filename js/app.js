@@ -177,6 +177,17 @@ GameOver.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+// Level in display class
+var LevelWin = function () {
+    this.x = 100;
+    this.y = 180;
+}
+
+LevelWin.prototype.render = function () {
+    this.sprite = 'images/levelover.png';
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
 // Game win display class
 var GameWin = function () {
     this.x = 100;

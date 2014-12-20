@@ -8,6 +8,7 @@ var playerLives = 3;
 var playerScore = 0;
 var winTrue = 0;
 var gameEnd = 0;
+var levelEnd = 0;
 
 
 var keyObtained = 0;
