@@ -16,6 +16,9 @@ var keyObtained = 0;
 var splashState = 1;
 var key2Obtained = 0;
 var key3Obtained = 0;
+var key4Obtained = 0;
+var key5Obtained = 0;
+var key6Obtained = 0;
 
 
 var Engine = (function(global) {
@@ -30,8 +33,8 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.setAttribute("id", "canvasID");
-    canvas.width = 505;
-    canvas.height = 606;
+    canvas.width = 909;
+    canvas.height = 909;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -116,12 +119,16 @@ var Engine = (function(global) {
                 'images/water-block.png',   // Top row is water
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
+                'images/stone-block.png',
+                'images/grass-block.png',
+                'images/stone-block.png',   // Row 1 of 3 of stone
+                'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
                 'images/grass-block.png',   // Row 1 of 2 of grass
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
-            numRows = 6,
-            numCols = 5,
+            numRows = 10,
+            numCols = 9,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -164,6 +171,15 @@ var Engine = (function(global) {
         if (key3Obtained === 0) {
             gamekey3.render();
         }
+        if (key4Obtained === 0) {
+            gamekey4.render();
+        }
+        if (key5Obtained === 0) {
+            gamekey5.render();
+        }
+        if (key6Obtained === 0) {
+            gamekey6.render();
+        }
 
         allEnemies.forEach(function(enemy) {
             enemy.render();
@@ -181,14 +197,13 @@ var Engine = (function(global) {
 
         }
 
-        // The player wins the game when they have obtained the key and are located in
-        // the top row. When the player wins they will receive a victory screen and the
-        // game will end.
-        if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1){
+        // The player beats the level when they have obtained the key and are located in
+        // the top row. After 5 levels the player wins the game
+        if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1 && key4Obtained === 1 && key5Obtained === 1 & key6Obtained === 1){
             levelclear.render();
             levelClear = 1;
         }
-        if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1 && currentLevel === 5){
+        if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1 && key4Obtained === 1 && key5Obtained === 1 & key6Obtained === 1 && currentLevel === 5){
             gamewin.render();
             gameEnd = 1;
         }

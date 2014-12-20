@@ -24,7 +24,7 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + xmove;
 
     // Once moving off the screen,  the enemy will be moved back to its initial x location
-    if (this.x > 800) {
+    if (this.x > 900) {
         this.x = -100;
     }
 
@@ -87,8 +87,8 @@ FastEnemy.prototype.speed = 3;
 var Player = function () {
     this.sprite = 'images/char-boy.png';
     // This sets the starting location for the player    
-    this.x = 200;
-    this.y = 380;
+    this.x = 402;
+    this.y = 629;
 }
 Player.prototype.update = function() {
 }
@@ -122,14 +122,14 @@ Player.prototype.handleInput = function(key) {
             break;
         case 'right':
             this.x = this.x + 101;
-            if (this.x > 404) {
-                this.x = 402;
+            if (this.x > 806) {
+                this.x = 806;
             }
            break;
         case 'down':
             this.y = this.y + 83;
-            if (this.y > 380) {
-                this.y = 380;
+            if (this.y > 712) {
+                this.y = 712;
             }
         default:
             break;
@@ -146,11 +146,20 @@ Player.prototype.handleInput = function(key) {
     if (gamekey3.y === this.y && gamekey3.x === this.x) {
         key3Obtained = 1;
     }
+    if (gamekey4.y === this.y && gamekey.x === this.x) {
+        key4Obtained = 1;
+    }
+    if (gamekey5.y === this.y && gamekey.x === this.x) {
+        key5Obtained = 1;
+    }
+    if (gamekey6.y === this.y && gamekey.x === this.x) {
+        key6Obtained = 1;
+    }
 }
 
 // Lives display class
 var Lives = function () {
-    this.x = 400;
+    this.x =800;
     this.y = 50;
 }
 //Lives.prototype.update = function (){};
@@ -251,8 +260,11 @@ var NewLevel = function () {
     keyObtained = 0;
     key2Obtained = 0;
     key3Obtained = 0;
-    player.x = 200
-    player.y = 380;
+    key4Obtained = 0;
+    key5Obtained = 0;
+    key6Obtained = 0;
+    player.x = 402;
+    player.y = 629;
     currentLevel = currentLevel + 1;
     NewKeys();
     NewEnemies();
@@ -260,30 +272,47 @@ var NewLevel = function () {
 
 // Sets new key locations
 var NewKeys =  function () {
-    randx = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
+    randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     keyx = -2 + (randx * 101);
     randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     keyy = -35 + (randy * 83);
 
-    randx2 = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
+    randx2 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     keyx2 = -2 + (randx2 * 101);
     randy2 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     keyy2 = -35 + (randy2 * 83);
 
-    randx3 = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
+    randx3 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     keyx3 = -2 + (randx3 * 101);
-    randy3 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    randy3 = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
     keyy3 = -35 + (randy3 * 83);
+
+    randx4 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+    keyx4 = -2 + (randx4 * 101);
+    randy4 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    keyy4 = 297 + (randy4 * 83);
+
+    randx5 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+    keyx5 = -2 + (randx5 * 101);
+    randy5 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    keyy5 = 297 + (randy5 * 83);
+
+    randx6 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+    keyx6 = -2 + (randx6 * 101);
+    randy6 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    keyy6 = 297 + (randy6 * 83);
 
     gamekey = new Key(keyx, keyy);
     gamekey2 = new Key(keyx2, keyy2);
     gamekey3 = new Key(keyx3, keyy3);
+    gamekey4 = new Key(keyx4, keyy4);
+    gamekey5 = new Key(keyx5, keyy5);
+    gamekey6 = new Key(keyx6, keyy6);
 }
 
 var NewEnemies = function () {
     top1 = new FastEnemy (250, 50, currentLevel);
-    top2 = new FastEnemy (-100, 50, currentLevel);
-    //top3 = new FastEnemy (-450, 50, currentLevel);
+    top2 = new FastEnemy (-250, 50, currentLevel);
     mid1 = new MedEnemy (100, 133, currentLevel);
     mid2 = new MedEnemy (-200, 133, currentLevel);
     mid3 = new MedEnemy (-500, 133, currentLevel);
@@ -298,7 +327,6 @@ var NewEnemies = function () {
 
 var top1 = new FastEnemy (250, 50, currentLevel);
 var top2 = new FastEnemy (-250, 50, currentLevel);
-//var top3 = new FastEnemy (-450, 50, currentLevel);
 var mid1 = new MedEnemy (100, 133, currentLevel);
 var mid2 = new MedEnemy (-200, 133, currentLevel);
 var mid3 = new MedEnemy (-500, 133, currentLevel);
@@ -319,24 +347,42 @@ var leveldisplay = new LevelDisplay();
 
 // Creates a random location on the track for the key to
 // be generated
-var randx = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
+var randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
 var keyx = -2 + (randx * 101);
 var randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 var keyy = -35 + (randy * 83);
 
-var randx2 = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
+var randx2 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
 var keyx2 = -2 + (randx2 * 101);
 var randy2 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 var keyy2 = -35 + (randy2 * 83);
 
-var randx3 = Math.floor(Math.random() * (4 - 0 + 1)) + 0; 
+var randx3 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
 var keyx3 = -2 + (randx3 * 101);
 var randy3 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 var keyy3 = -35 + (randy3 * 83);
 
+var randx4 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+var keyx4 = -2 + (randx4 * 101);
+var randy4 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+var keyy4 = 297 + (randy4 * 83);
+
+var randx5 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+var keyx5 = -2 + (randx5 * 101);
+var randy5 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+var keyy5 = 297 + (randy5 * 83);
+
+var randx6 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+var keyx6 = -2 + (randx6 * 101);
+var randy6 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+var keyy6 = 297 + (randy6 * 83);
+
 var gamekey = new Key(keyx, keyy);
 var gamekey2 = new Key(keyx2, keyy2);
 var gamekey3 = new Key(keyx3, keyy3);
+var gamekey4 = new Key(keyx4, keyy4);
+var gamekey5 = new Key(keyx5, keyy5);
+var gamekey6 = new Key(keyx6, keyy6);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
