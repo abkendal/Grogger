@@ -177,7 +177,6 @@ var Engine = (function(global) {
         if (playerLives === 0){
             gameover.render();
             gameEnd=1;
-            //location.reload();
 
         }
 
@@ -185,11 +184,12 @@ var Engine = (function(global) {
         // the top row. When the player wins they will receive a victory screen and the
         // game will end.
         if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1){
-            //debugger;
             levelclear.render();
-            
             levelClear = 1;
-            //reset();
+        }
+        if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1 && currentLevel === 5){
+            gamewin.render();
+            gameEnd = 1;
         }
     }
 
