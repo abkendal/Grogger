@@ -31,8 +31,8 @@ Enemy.prototype.update = function(dt) {
     // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
     // to the starting location.
     if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 42) {
-        player.x = 200;
-        player.y = 380;
+        player.x = 402;
+        player.y = 629;
         
         // Lose a life every time the player collides with an enemy
         playerLives = playerLives - 1;
@@ -146,13 +146,13 @@ Player.prototype.handleInput = function(key) {
     if (gamekey3.y === this.y && gamekey3.x === this.x) {
         key3Obtained = 1;
     }
-    if (gamekey4.y === this.y && gamekey.x === this.x) {
+    if (gamekey4.y === this.y && gamekey4.x === this.x) {
         key4Obtained = 1;
     }
-    if (gamekey5.y === this.y && gamekey.x === this.x) {
+    if (gamekey5.y === this.y && gamekey5.x === this.x) {
         key5Obtained = 1;
     }
-    if (gamekey6.y === this.y && gamekey.x === this.x) {
+    if (gamekey6.y === this.y && gamekey6.x === this.x) {
         key6Obtained = 1;
     }
 }
@@ -246,6 +246,25 @@ Key.prototype.render = function (){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+// Gems that the player must either avoid or pick up for extra points
+var Gem = function (x, y) {
+    this.x = x;
+    this.y = y;
+}
+Gem.prototype.render = function (){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+// Hearts that a player can pick up to gain an extra life
+var Heart = function (x, y) {
+    this.x = x;
+    this.y = y;
+}
+Heart.prototype.render = function (){
+    this.sprite = 'images/Heart.png';
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
 // Reloads the browser when the game ends
 var RestartGame = function (){
     location.reload();
@@ -284,7 +303,7 @@ var NewKeys =  function () {
 
     randx3 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     keyx3 = -2 + (randx3 * 101);
-    randy3 = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+    randy3 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     keyy3 = -35 + (randy3 * 83);
 
     randx4 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
