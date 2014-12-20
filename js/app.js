@@ -365,10 +365,18 @@ var mid3 = new MedEnemy (-500, 133, currentLevel);
 var bot1 = new SlowEnemy (250, 216, currentLevel);
 var bot2 = new SlowEnemy (-250, 216, currentLevel);
 
+var top21 = new FastEnemy (250, 380, currentLevel);
+var top22 = new FastEnemy (-250, 380, currentLevel);
+var mid21 = new MedEnemy (100, 463, currentLevel);
+var mid22 = new MedEnemy (-200, 463, currentLevel);
+var mid23 = new MedEnemy (-500, 463, currentLevel);
+var bot21 = new SlowEnemy (250, 546, currentLevel);
+var bot22 = new SlowEnemy (-250, 546, currentLevel);
+
 
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2];
+var allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2, top21, top22, mid21, mid22, mid23, bot21, bot22];
 
 var player = new Player();
 var lives = new Lives();
