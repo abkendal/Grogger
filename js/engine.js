@@ -8,7 +8,8 @@ var playerLives = 3;
 var playerScore = 0;
 var winTrue = 0;
 var gameEnd = 0;
-var levelEnd = 0;
+var currentLevel = 1;
+var levelClear = 0;
 
 
 var keyObtained = 0;
@@ -185,8 +186,10 @@ var Engine = (function(global) {
         // game will end.
         if (winTrue === 1 && keyObtained === 1 && key2Obtained === 1 && key3Obtained === 1){
             //debugger;
-            gamewin.render();
-            gameEnd = 1;
+            levelclear.render();
+            
+            levelClear = 1;
+            //reset();
         }
     }
 
@@ -201,13 +204,12 @@ var Engine = (function(global) {
     // respond to keyboard inputs.  
     function reset() {
         playerLives = 3;
-        playerScore = 0;
         winTrue = 0;
         gameEnd = 0;
+        levelClear = 0;
 
 
         keyObtained = 0;
-        splashState = 1;
         key2Obtained = 0;
         key3Obtained = 0;
         
@@ -230,7 +232,8 @@ var Engine = (function(global) {
         'images/3.png',
         'images/gameover.png',
         'images/gameover2.png',
-        'images/youwin.png'
+        'images/youwin.png',
+        'images/levelClearflat.png'
     ]);
     Resources.onReady(init);
 
