@@ -19,6 +19,7 @@ var key3Obtained = 0;
 var key4Obtained = 0;
 var key5Obtained = 0;
 var key6Obtained = 0;
+var blueGemObtained = 0;
 
 
 var Engine = (function(global) {
@@ -180,6 +181,9 @@ var Engine = (function(global) {
         if (key6Obtained === 0) {
             gamekey6.render();
         }
+        if (blueGemObtained === 0) {
+            bluegem.render();
+        }
 
         allEnemies.forEach(function(enemy) {
             enemy.render();
@@ -241,6 +245,7 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
+        'images/char-boy-frozen.png',
         'images/Key.png',
         'images/Gem-Blue.png',
         'images/Gem-Orange.png',

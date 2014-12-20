@@ -155,6 +155,10 @@ Player.prototype.handleInput = function(key) {
     if (gamekey6.y === this.y && gamekey6.x === this.x) {
         key6Obtained = 1;
     }
+    if (bluegem.y === this.y && bluegem.x === this.x) {
+        blueGemObtained = 1;
+        player.sprite = 'images/char-boy-frozen.png'
+    }
 }
 
 // Lives display class
@@ -255,6 +259,14 @@ Gem.prototype.render = function (){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+// Blue Gem subclass - freezes the player when obtained
+var BlueGem = function (x, y) {
+    Gem.call(this,x, y);
+};
+BlueGem.prototype = Object.create(Gem.prototype);
+BlueGem.prototype.constructor = BlueGem;
+BlueGem.prototype.sprite = 'images/Gem-Blue.png';
+
 // Hearts that a player can pick up to gain an extra life
 var Heart = function (x, y) {
     this.x = x;
@@ -282,6 +294,7 @@ var NewLevel = function () {
     key4Obtained = 0;
     key5Obtained = 0;
     key6Obtained = 0;
+    blueGemObtained = 0;
     player.x = 402;
     player.y = 629;
     currentLevel = currentLevel + 1;
@@ -402,6 +415,7 @@ var gamekey3 = new Key(keyx3, keyy3);
 var gamekey4 = new Key(keyx4, keyy4);
 var gamekey5 = new Key(keyx5, keyy5);
 var gamekey6 = new Key(keyx6, keyy6);
+var bluegem = new BlueGem(402, 463);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -417,7 +431,7 @@ document.addEventListener('keyup', function(e) {
         $("#canvasID").show();
         splashState = 0;
     }
-    else if (splashState === 0 && gameEnd === 0) {
+    else if (splashState === 0 && gameEnd === 0 && blueGemObtained === 0) {
 
         player.handleInput(allowedKeys[e.keyCode]);
     }
