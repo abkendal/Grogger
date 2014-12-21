@@ -164,7 +164,7 @@ var Engine = (function(global) {
          */
          // Renders the blue gem as long as it has not been obtained
          if (blueGemObtained === 0) {
-            bluegem.render();
+            bluegem2.render();
         }
 
          // Renders they key as long as it has not been obtained

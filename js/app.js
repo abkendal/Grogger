@@ -161,12 +161,12 @@ Player.prototype.handleInput = function(key) {
     if (gamekey6.y === this.y && gamekey6.x === this.x) {
         key6Obtained = 1;
     }
-    if (bluegem.y === this.y && bluegem.x === this.x) {
+    if (bluegem2.y === this.y && bluegem2.x === this.x) {
         blueGemObtained = 1;
         frozen = 1;
         player.sprite = 'images/char-boy-frozen.png'
-        bluegem.x = 9999;
-        bluegem.y = 9999;
+        bluegem2.x = 9999;
+        bluegem2.y = 9999;
     }
 }
 
@@ -310,6 +310,7 @@ var NewLevel = function () {
     currentLevel = currentLevel + 1;
     NewKeys();
     NewEnemies();
+    NewGems();
 } 
 
 // Sets new key locations
@@ -366,11 +367,19 @@ var NewEnemies = function () {
     mid22 = new MedEnemy (-50, 463, currentLevel);
     mid23 = new MedEnemy (-350, 463, currentLevel);
     bot21 = new SlowEnemy (200, 546, currentLevel);
-    bot22 = new SlowEnemy (-3000, 546, currentLevel);
+    bot22 = new SlowEnemy (-300, 546, currentLevel);
     allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2, top21, top22, mid21, mid22, mid23, bot21, bot22];
 
 }
 
+var NewGems = function () {
+    bg2randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+    bg2x = -2 + (bg2randx * 101);
+    bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    bg2y = 297 + (bg2randy * 83);
+
+    bluegem2 = new BlueGem(bg2x, bg2y);
+}
 // Now instantiate your objects.
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
 // the enemy asynchrony. 
@@ -403,8 +412,8 @@ var gamewin = new GameWin();
 var levelclear = new LevelClear();
 var leveldisplay = new LevelDisplay();
 
-// Creates a random location on the track for the key to
-// be generated
+// Creates a random location on the track for the keys
+// and gems to be generated
 var randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
 var keyx = -2 + (randx * 101);
 var randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
@@ -435,13 +444,18 @@ var keyx6 = -2 + (randx6 * 101);
 var randy6 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 var keyy6 = 297 + (randy6 * 83);
 
+var bg2randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+var bg2x = -2 + (bg2randx * 101);
+var bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+var bg2y = 297 + (bg2randy * 83);
+
 var gamekey = new Key(keyx, keyy);
 var gamekey2 = new Key(keyx2, keyy2);
 var gamekey3 = new Key(keyx3, keyy3);
 var gamekey4 = new Key(keyx4, keyy4);
 var gamekey5 = new Key(keyx5, keyy5);
 var gamekey6 = new Key(keyx6, keyy6);
-var bluegem = new BlueGem(402, 463);
+var bluegem2 = new BlueGem(bg2x, bg2y);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
