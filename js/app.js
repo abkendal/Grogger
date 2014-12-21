@@ -30,9 +30,11 @@ Enemy.prototype.update = function(dt) {
 
     // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
     // to the starting location.
-    if (player.y < this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 42) {
+    if (player.y === this.y && this.x + 83> player.x && this.x < player.x + 42) {
         player.x = 402;
-        player.y = 629;
+        player.y = 712;
+        frozen = 0;
+        player.sprite = 'images/char-boy.png';
         
         // Lose a life every time the player collides with an enemy
         playerLives = playerLives - 1;
@@ -44,6 +46,10 @@ Enemy.prototype.update = function(dt) {
         console.log("You have " + playerLives + " lives.");
         console.log(playerScore);
     }
+    //if (player.y === this.y && player.y + 83 > this.y && this.x + 83> player.x && this.x < player.x + 42) {
+    //    player.x = 402;
+    //    player.y = 629;
+    //};
 }
 
 // Draw the enemy on the screen, required method for game
@@ -88,7 +94,7 @@ var Player = function () {
     this.sprite = 'images/char-boy.png';
     // This sets the starting location for the player    
     this.x = 402;
-    this.y = 629;
+    this.y = 712;
 }
 Player.prototype.update = function() {
 }
@@ -157,7 +163,10 @@ Player.prototype.handleInput = function(key) {
     }
     if (bluegem.y === this.y && bluegem.x === this.x) {
         blueGemObtained = 1;
+        frozen = 1;
         player.sprite = 'images/char-boy-frozen.png'
+        bluegem.x = 9999;
+        bluegem.y = 9999;
     }
 }
 
@@ -295,8 +304,9 @@ var NewLevel = function () {
     key5Obtained = 0;
     key6Obtained = 0;
     blueGemObtained = 0;
+    frozen = 0;
     player.x = 402;
-    player.y = 629;
+    player.y = 712;
     currentLevel = currentLevel + 1;
     NewKeys();
     NewEnemies();
@@ -343,35 +353,43 @@ var NewKeys =  function () {
 }
 
 var NewEnemies = function () {
-    top1 = new FastEnemy (250, 50, currentLevel);
-    top2 = new FastEnemy (-250, 50, currentLevel);
-    mid1 = new MedEnemy (100, 133, currentLevel);
-    mid2 = new MedEnemy (-200, 133, currentLevel);
-    mid3 = new MedEnemy (-500, 133, currentLevel);
-    bot1 = new SlowEnemy (250, 216, currentLevel);
-    bot2 = new SlowEnemy (-250, 216, currentLevel);
-    allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2];
+    top1 = new FastEnemy (250, 48, currentLevel);
+    top2 = new FastEnemy (-250, 48, currentLevel);
+    mid1 = new MedEnemy (100, 131, currentLevel);
+    mid2 = new MedEnemy (-200, 131, currentLevel);
+    mid3 = new MedEnemy (-500, 131, currentLevel);
+    bot1 = new SlowEnemy (250, 214, currentLevel);
+    bot2 = new SlowEnemy (-250, 214, currentLevel);
+    top21 = new FastEnemy (400, 380, currentLevel);
+    top22 = new FastEnemy (-100, 380, currentLevel);
+    mid21 = new MedEnemy (250, 463, currentLevel);
+    mid22 = new MedEnemy (-50, 463, currentLevel);
+    mid23 = new MedEnemy (-350, 463, currentLevel);
+    bot21 = new SlowEnemy (200, 546, currentLevel);
+    bot22 = new SlowEnemy (-3000, 546, currentLevel);
+    allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2, top21, top22, mid21, mid22, mid23, bot21, bot22];
+
 }
 
 // Now instantiate your objects.
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
 // the enemy asynchrony. 
 
-var top1 = new FastEnemy (250, 50, currentLevel);
-var top2 = new FastEnemy (-250, 50, currentLevel);
-var mid1 = new MedEnemy (100, 133, currentLevel);
-var mid2 = new MedEnemy (-200, 133, currentLevel);
-var mid3 = new MedEnemy (-500, 133, currentLevel);
-var bot1 = new SlowEnemy (250, 216, currentLevel);
-var bot2 = new SlowEnemy (-250, 216, currentLevel);
+var top1 = new FastEnemy (250, 48, currentLevel);
+var top2 = new FastEnemy (-250, 48, currentLevel);
+var mid1 = new MedEnemy (100, 131, currentLevel);
+var mid2 = new MedEnemy (-200, 131, currentLevel);
+var mid3 = new MedEnemy (-500, 131, currentLevel);
+var bot1 = new SlowEnemy (250, 214, currentLevel);
+var bot2 = new SlowEnemy (-250, 214, currentLevel);
 
-var top21 = new FastEnemy (250, 380, currentLevel);
-var top22 = new FastEnemy (-250, 380, currentLevel);
-var mid21 = new MedEnemy (100, 463, currentLevel);
-var mid22 = new MedEnemy (-200, 463, currentLevel);
-var mid23 = new MedEnemy (-500, 463, currentLevel);
-var bot21 = new SlowEnemy (250, 546, currentLevel);
-var bot22 = new SlowEnemy (-250, 546, currentLevel);
+var top21 = new FastEnemy (400, 380, currentLevel);
+var top22 = new FastEnemy (-100, 380, currentLevel);
+var mid21 = new MedEnemy (250, 463, currentLevel);
+var mid22 = new MedEnemy (-50, 463, currentLevel);
+var mid23 = new MedEnemy (-350, 463, currentLevel);
+var bot21 = new SlowEnemy (200, 546, currentLevel);
+var bot22 = new SlowEnemy (-3000, 546, currentLevel);
 
 
 
@@ -439,7 +457,7 @@ document.addEventListener('keyup', function(e) {
         $("#canvasID").show();
         splashState = 0;
     }
-    else if (splashState === 0 && gameEnd === 0 && blueGemObtained === 0) {
+    else if (splashState === 0 && gameEnd === 0 && frozen === 0) {
 
         player.handleInput(allowedKeys[e.keyCode]);
     }
