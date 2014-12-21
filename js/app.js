@@ -183,8 +183,8 @@ Player.prototype.handleInput = function(key) {
 
 // Lives display class
 var Lives = function () {
-    this.x =800;
-    this.y = 50;
+    this.x =410;
+    this.y = 25;
 }
 //Lives.prototype.update = function (){};
 Lives.prototype.render = function (num) {
@@ -224,7 +224,7 @@ Lives.prototype.render = function (num) {
 //Level display class
 var LevelDisplay = function () {
     this.x = 10;
-    this.y = 30;
+    this.y = 25;
 }
 
 LevelDisplay.prototype.render = function (num) {
@@ -348,34 +348,34 @@ var NewLevel = function () {
 // Sets new key locations
 var NewKeys =  function () {
     randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    keyx = -2 + (randx * 101);
+    keyx = -1 + (randx * 51);
     randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    keyy = -35 + (randy * 83);
+    keyy = -16 + (randy * 42);
 
     randx2 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    keyx2 = -2 + (randx2 * 101);
+    keyx2 = -1 + (randx2 * 51);
     randy2 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    keyy2 = -35 + (randy2 * 83);
+    keyy2 = -16 + (randy2 * 42);
 
     randx3 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    keyx3 = -2 + (randx3 * 101);
+    keyx3 = -1 + (randx3 * 51);
     randy3 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    keyy3 = -35 + (randy3 * 83);
+    keyy3 = -16 + (randy3 * 42);
 
     randx4 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    keyx4 = -2 + (randx4 * 101);
+    keyx4 = -1 + (randx4 * 51);
     randy4 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    keyy4 = 297 + (randy4 * 83);
+    keyy4 = 152 + (randy4 * 42);
 
     randx5 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    keyx5 = -2 + (randx5 * 101);
+    keyx5 = -1 + (randx5 * 51);
     randy5 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    keyy5 = 297 + (randy5 * 83);
+    keyy5 = 152 + (randy5 * 42);
 
     randx6 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    keyx6 = -2 + (randx6 * 101);
+    keyx6 = -1 + (randx6 * 51);
     randy6 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    keyy6 = 297 + (randy6 * 83);
+    keyy6 = 152 + (randy6 * 42);
 
     gamekey = new Key(keyx, keyy);
     gamekey2 = new Key(keyx2, keyy2);
@@ -407,19 +407,26 @@ var NewEnemies = function () {
 
 var NewGems = function () {
     bgrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    bgx = -2 + (bgrandx * 101);
+    bgx = -1 + (bgrandx * 51);
     bgrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    bgy = -35 + (bgrandy * 83);
+    bgy = -16 + (bgrandy * 42);
+
     bg2randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-    bg2x = -2 + (bg2randx * 101);
+    bg2x = -1 + (bg2randx * 51);
     bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    bg2y = 297 + (bg2randy * 83);
+    bg2y = 152 + (bg2randy * 42);
+
 
     bluegem = new BlueGem(bgx, bgy);
     bluegem2 = new BlueGem(bg2x, bg2y);
 }
 
 var NewHeart = function () {
+    hrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+    heartx = -1 + (hrandx * 51);
+    hrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    hearty = -16 + (hrandy * 42);
+    var heart = new Heart(heartx, hearty);
 
 }
 // Now instantiate your objects.
@@ -457,49 +464,49 @@ var leveldisplay = new LevelDisplay();
 // Creates a random location on the track for the keys
 // and gems to be generated
 var randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var keyx = -2 + (randx * 101);
+var keyx = -1 + (randx * 51);
 var randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var keyy = -35 + (randy * 83);
+var keyy = -16 + (randy * 42);
 
 var randx2 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var keyx2 = -2 + (randx2 * 101);
+var keyx2 = -1 + (randx2 * 51);
 var randy2 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var keyy2 = -35 + (randy2 * 83);
+var keyy2 = -16 + (randy2 * 42);
 
 var randx3 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var keyx3 = -2 + (randx3 * 101);
+var keyx3 = -1 + (randx3 * 51);
 var randy3 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var keyy3 = -35 + (randy3 * 83);
+var keyy3 = -16 + (randy3 * 42);
 
 var randx4 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var keyx4 = -2 + (randx4 * 101);
+var keyx4 = -1 + (randx4 * 51);
 var randy4 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var keyy4 = 297 + (randy4 * 83);
+var keyy4 = 152 + (randy4 * 42);
 
 var randx5 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var keyx5 = -2 + (randx5 * 101);
+var keyx5 = -1 + (randx5 * 51);
 var randy5 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var keyy5 = 297 + (randy5 * 83);
+var keyy5 = 152 + (randy5 * 42);
 
 var randx6 = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var keyx6 = -2 + (randx6 * 101);
+var keyx6 = -1 + (randx6 * 51);
 var randy6 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var keyy6 = 297 + (randy6 * 83);
+var keyy6 = 152 + (randy6 * 42);
 
 var bgrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var bgx = -2 + (bgrandx * 101);
+var bgx = -1 + (bgrandx * 51);
 var bgrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var bgy = -35 + (bgrandy * 83);
+var bgy = -16 + (bgrandy * 42);
 
 var bg2randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var bg2x = -2 + (bg2randx * 101);
+var bg2x = -1 + (bg2randx * 51);
 var bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var bg2y = 297 + (bg2randy * 83);
+var bg2y = 152 + (bg2randy * 42);
 
 var hrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
-var heartx = -2 + (hrandx * 101);
+var heartx = -1 + (hrandx * 51);
 var hrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-var hearty = -35 + (hrandy * 83);
+var hearty = -16 + (hrandy * 42);
 
 var gamekey = new Key(keyx, keyy);
 var gamekey2 = new Key(keyx2, keyy2);
@@ -509,7 +516,7 @@ var gamekey5 = new Key(keyx5, keyy5);
 var gamekey6 = new Key(keyx6, keyy6);
 var bluegem = new BlueGem(bgx, bgy);
 var bluegem2 = new BlueGem(bg2x, bg2y);
-var heart = new Heart(heartx, hearty)
+var heart = new Heart(heartx, hearty);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
