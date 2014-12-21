@@ -6,7 +6,7 @@
  */
 
 // Global variables relating to game states
-var playerLives = 3;
+var playerLives = 5;
 var playerScore = 0;
 
 var winTrue = 0;
@@ -23,6 +23,7 @@ var key6Obtained = 0;
 var blueGemObtained = 0;
 var blueGem2Obtained = 0;
 var frozen = 0;
+var heartObtained = 0;
 
 
 var Engine = (function(global) {
@@ -164,6 +165,12 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
+
+         //Renders the heart as long as it has not been obtained 
+         if (heartObtained === 0) {
+            heart.render();
+         }
+
          // Renders the blue gems as long as they have not been obtained
         if (blueGemObtained === 0) {
             bluegem.render();
@@ -231,15 +238,6 @@ var Engine = (function(global) {
     // if the player has obtained the key yet. gameEnd tells the game to no longer 
     // respond to keyboard inputs.  
     function reset() {
-        playerLives = 3;
-        winTrue = 0;
-        gameEnd = 0;
-        levelClear = 0;
-
-
-        keyObtained = 0;
-        key2Obtained = 0;
-        key3Obtained = 0;
         
     }
 
@@ -263,6 +261,11 @@ var Engine = (function(global) {
         'images/2.png',
         'images/3.png',
         'images/4.png',
+        'images/5.png',
+        'images/6.png',
+        'images/7.png',
+        'images/8.png',
+        'images/9.png',
         'images/gameover.png',
         'images/gameover2.png',
         'images/youwin.png',

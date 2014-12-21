@@ -175,6 +175,10 @@ Player.prototype.handleInput = function(key) {
         bluegem2.x = 9999;
         bluegem2.y = 9999;
     }
+    if (heart.y === this.y && heart.x === this.x) {
+        heartObtained = 1;
+        playerLives = playerLives + 1;
+    }
 }
 
 // Lives display class
@@ -195,6 +199,24 @@ Lives.prototype.render = function (num) {
     }
     else if (num === 3) {
         this.sprite = 'images/3.png';
+    }
+    else if (num === 4) {
+        this.sprite = 'images/4.png';
+    }
+    else if (num === 5) {
+        this.sprite = 'images/5.png';
+    }
+    else if (num === 6) {
+        this.sprite = 'images/6.png';
+    }
+    else if (num === 7) {
+        this.sprite = 'images/7.png';
+    }
+    else if (num === 8) {
+        this.sprite = 'images/8.png';
+    }
+    else if (num === 9) {
+        this.sprite = 'images/9.png';
     }
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -226,8 +248,8 @@ LevelDisplay.prototype.render = function (num) {
 
 // Game over display class
 var GameOver = function () {
-    this.x = 55;
-    this.y = 200;
+    this.x = 250;
+    this.y = 400;
 }
 GameOver.prototype.render = function () {
     this.sprite = 'images/gameover.png';
@@ -236,8 +258,8 @@ GameOver.prototype.render = function () {
 
 // Level in display class
 var LevelClear = function () {
-    this.x = 100;
-    this.y = 180;
+    this.x = 285;
+    this.y = 380;
 }
 
 LevelClear.prototype.render = function () {
@@ -247,8 +269,8 @@ LevelClear.prototype.render = function () {
 
 // Game win display class
 var GameWin = function () {
-    this.x = 100;
-    this.y = 180;
+    this.x = 285;
+    this.y = 380;
 }
 GameWin.prototype.render = function () {
     this.sprite = 'images/youwin.png';
@@ -300,7 +322,7 @@ var RestartGame = function (){
 
 // Resets the initial state for the new level
 var NewLevel = function () {
-    playerLives = 3;
+    //playerLives = 3;
     winTrue = 0;
     gameEnd = 0;
     levelClear = 0;
@@ -313,12 +335,14 @@ var NewLevel = function () {
     blueGemObtained = 0;
     blueGem2Obtained = 0;
     frozen = 0;
+    heartObtained = 0;
     player.x = 402;
     player.y = 712;
     currentLevel = currentLevel + 1;
     NewKeys();
     NewEnemies();
     NewGems();
+    NewHeart();
 } 
 
 // Sets new key locations
@@ -392,6 +416,10 @@ var NewGems = function () {
 
     bluegem = new BlueGem(bgx, bgy);
     bluegem2 = new BlueGem(bg2x, bg2y);
+}
+
+var NewHeart = function () {
+
 }
 // Now instantiate your objects.
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
@@ -467,6 +495,11 @@ var bg2x = -2 + (bg2randx * 101);
 var bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 var bg2y = 297 + (bg2randy * 83);
 
+var hrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+var heartx = -2 + (hrandx * 101);
+var hrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+var hearty = -35 + (hrandy * 83);
+
 var gamekey = new Key(keyx, keyy);
 var gamekey2 = new Key(keyx2, keyy2);
 var gamekey3 = new Key(keyx3, keyy3);
@@ -475,6 +508,7 @@ var gamekey5 = new Key(keyx5, keyy5);
 var gamekey6 = new Key(keyx6, keyy6);
 var bluegem = new BlueGem(bgx, bgy);
 var bluegem2 = new BlueGem(bg2x, bg2y);
+var heart = new Heart(heartx, hearty)
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

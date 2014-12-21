@@ -1,5 +1,4 @@
-- Pressing any button when you reach the end game restarts the game
-- Make a splash page with a start and an info button
-- Include multiple keys
-- Include gems that give bonus points
+- Include green gems that give bonus points
 - Show the score in the UI (top left corder?)
+- Giant bug on higher levels
+- If you dont die at all on a level you get bonus points
