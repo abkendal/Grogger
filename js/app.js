@@ -161,8 +161,15 @@ Player.prototype.handleInput = function(key) {
     if (gamekey6.y === this.y && gamekey6.x === this.x) {
         key6Obtained = 1;
     }
-    if (bluegem2.y === this.y && bluegem2.x === this.x) {
+    if (bluegem.y === this.y && bluegem.x === this.x) {
         blueGemObtained = 1;
+        frozen = 1;
+        player.sprite = 'images/char-boy-frozen.png'
+        bluegem.x = 9999;
+        bluegem.y = 9999;
+    }
+    if (bluegem2.y === this.y && bluegem2.x === this.x) {
+        blueGem2Obtained = 1;
         frozen = 1;
         player.sprite = 'images/char-boy-frozen.png'
         bluegem2.x = 9999;
@@ -304,6 +311,7 @@ var NewLevel = function () {
     key5Obtained = 0;
     key6Obtained = 0;
     blueGemObtained = 0;
+    blueGem2Obtained = 0;
     frozen = 0;
     player.x = 402;
     player.y = 712;
@@ -373,11 +381,16 @@ var NewEnemies = function () {
 }
 
 var NewGems = function () {
+    bgrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+    bgx = -2 + (bgrandx * 101);
+    bgrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    bgy = -35 + (bgrandy * 83);
     bg2randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     bg2x = -2 + (bg2randx * 101);
     bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     bg2y = 297 + (bg2randy * 83);
 
+    bluegem = new BlueGem(bgx, bgy);
     bluegem2 = new BlueGem(bg2x, bg2y);
 }
 // Now instantiate your objects.
@@ -444,6 +457,11 @@ var keyx6 = -2 + (randx6 * 101);
 var randy6 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 var keyy6 = 297 + (randy6 * 83);
 
+var bgrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
+var bgx = -2 + (bgrandx * 101);
+var bgrandy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+var bgy = -35 + (bgrandy * 83);
+
 var bg2randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
 var bg2x = -2 + (bg2randx * 101);
 var bg2randy = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
@@ -455,6 +473,7 @@ var gamekey3 = new Key(keyx3, keyy3);
 var gamekey4 = new Key(keyx4, keyy4);
 var gamekey5 = new Key(keyx5, keyy5);
 var gamekey6 = new Key(keyx6, keyy6);
+var bluegem = new BlueGem(bgx, bgy);
 var bluegem2 = new BlueGem(bg2x, bg2y);
 
 // This listens for key presses and sends the keys to your

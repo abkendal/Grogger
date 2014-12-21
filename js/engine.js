@@ -4,14 +4,15 @@
  * render methods on your player and enemy objects (defined in your app.js).
  *
  */
+
+// Global variables relating to game states
 var playerLives = 3;
 var playerScore = 0;
+
 var winTrue = 0;
 var gameEnd = 0;
 var currentLevel = 1;
 var levelClear = 0;
-
-
 var keyObtained = 0;
 var splashState = 1;
 var key2Obtained = 0;
@@ -20,6 +21,7 @@ var key4Obtained = 0;
 var key5Obtained = 0;
 var key6Obtained = 0;
 var blueGemObtained = 0;
+var blueGem2Obtained = 0;
 var frozen = 0;
 
 
@@ -162,8 +164,11 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-         // Renders the blue gem as long as it has not been obtained
-         if (blueGemObtained === 0) {
+         // Renders the blue gems as long as they have not been obtained
+        if (blueGemObtained === 0) {
+            bluegem.render();
+        }
+        if (blueGem2Obtained === 0) {
             bluegem2.render();
         }
 
