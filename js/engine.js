@@ -38,8 +38,8 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.setAttribute("id", "canvasID");
-    canvas.width = 909;
-    canvas.height = 909;
+    canvas.width = 459;
+    canvas.height = 500;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -121,16 +121,16 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',
-                'images/grass-block.png',
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/rsz-water-block.png',   // Top row is water
+                'images/rsz-stone-block.png',   // Row 1 of 3 of stone
+                'images/rsz-stone-block.png',   // Row 2 of 3 of stone
+                'images/rsz-stone-block.png',
+                'images/rsz-grass-block.png',
+                'images/rsz-stone-block.png',   // Row 1 of 3 of stone
+                'images/rsz-stone-block.png',   // Row 2 of 3 of stone
+                'images/rsz-stone-block.png',   // Row 3 of 3 of stone
+                'images/rsz-grass-block.png',   // Row 1 of 2 of grass
+                'images/rsz-grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 10,
             numCols = 9,
@@ -149,11 +149,11 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                ctx.drawImage(Resources.get(rowImages[row]), col * 51, row * 42);
             }
         }
         // Clears the top of the canvas
-        ctx.clearRect(0, 0, canvas.width, 50);
+        ctx.clearRect(0, 0, canvas.width, 25);
         renderEntities();
     }
 
@@ -246,26 +246,26 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-boy.png',
-        'images/char-boy-frozen.png',
-        'images/Key.png',
-        'images/Gem-Blue.png',
-        'images/Gem-Orange.png',
-        'images/Heart.png',
-        'images/0.png',
-        'images/1.png',
-        'images/2.png',
-        'images/3.png',
-        'images/4.png',
-        'images/5.png',
-        'images/6.png',
-        'images/7.png',
-        'images/8.png',
-        'images/9.png',
+        'images/rsz-stone-block.png',
+        'images/rsz-water-block.png',
+        'images/rsz-grass-block.png',
+        'images/rsz-enemy-bug.png',
+        'images/rsz-char-boy.png',
+        'images/rsz-char-boy-frozen.png',
+        'images/rsz-Key.png',
+        'images/rsz-Gem-Blue.png',
+        'images/rsz-Gem-Orange.png',
+        'images/rsz-Heart.png',
+        'images/rsz-0.png',
+        'images/rsz-1.png',
+        'images/rsz-2.png',
+        'images/rsz-3.png',
+        'images/rsz-4.png',
+        'images/rsz-5.png',
+        'images/rsz-6.png',
+        'images/rsz-7.png',
+        'images/rsz-8.png',
+        'images/rsz-9.png',
         'images/gameover.png',
         'images/gameover2.png',
         'images/youwin.png',

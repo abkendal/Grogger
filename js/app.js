@@ -3,7 +3,7 @@
 var Enemy = function(x, y) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/rsz-enemy-bug.png';
     
     this.x = x;
     this.y = y;
@@ -30,11 +30,11 @@ Enemy.prototype.update = function(dt) {
 
     // Here is the collision detection. If the enemy collides with the player, the player will be sent back 
     // to the starting location.
-    if (player.y === this.y && this.x + 83> player.x && this.x < player.x + 42) {
-        player.x = 402;
-        player.y = 712;
+    if (player.y === this.y && this.x + 42> player.x && this.x < player.x + 21) {
+        player.x = 203;
+        player.y = 362;
         frozen = 0;
-        player.sprite = 'images/char-boy.png';
+        player.sprite = 'images/rsz-char-boy.png';
         
         // Lose a life every time the player collides with an enemy
         playerLives = playerLives - 1;
@@ -91,10 +91,10 @@ FastEnemy.prototype.speed = 3;
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function () {
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/rsz-char-boy.png';
     // This sets the starting location for the player    
-    this.x = 402;
-    this.y = 712;
+    this.x = 203;
+    this.y = 362;
 }
 Player.prototype.update = function() {
 }
@@ -115,27 +115,27 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) { 
     switch(key) {
         case 'left':
-            this.x = this.x - 101;
-            if (this.x < -2) {
-                this.x = -2;
+            this.x = this.x - 51;
+            if (this.x < -1) {
+                this.x = -1;
             }
             break;
         case 'up':
-            this.y = this.y - 83;
-            if (this.y < -35){
-                this.y = -35;
+            this.y = this.y - 42;
+            if (this.y < -16){
+                this.y = -16;
             }
             break;
         case 'right':
-            this.x = this.x + 101;
-            if (this.x > 806) {
-                this.x = 806;
+            this.x = this.x + 51;
+            if (this.x > 407) {
+                this.x = 407;
             }
            break;
         case 'down':
-            this.y = this.y + 83;
-            if (this.y > 712) {
-                this.y = 712;
+            this.y = this.y + 42;
+            if (this.y > 362) {
+                this.y = 362;
             }
         default:
             break;
@@ -164,14 +164,14 @@ Player.prototype.handleInput = function(key) {
     if (bluegem.y === this.y && bluegem.x === this.x) {
         blueGemObtained = 1;
         frozen = 1;
-        player.sprite = 'images/char-boy-frozen.png'
+        player.sprite = 'images/rsz-char-boy-frozen.png'
         bluegem.x = 9999;
         bluegem.y = 9999;
     }
     if (bluegem2.y === this.y && bluegem2.x === this.x) {
         blueGem2Obtained = 1;
         frozen = 1;
-        player.sprite = 'images/char-boy-frozen.png'
+        player.sprite = 'images/rsz-char-boy-frozen.png'
         bluegem2.x = 9999;
         bluegem2.y = 9999;
     }
@@ -189,42 +189,42 @@ var Lives = function () {
 //Lives.prototype.update = function (){};
 Lives.prototype.render = function (num) {
         if (num === 0) {
-        this.sprite = 'images/0.png';
+        this.sprite = 'images/rsz-0.png';
     }
     else if (num === 1) {
-        this.sprite = 'images/1.png';
+        this.sprite = 'images/rsz-1.png';
     }
     else if (num === 2) {
-        this.sprite = 'images/2.png';
+        this.sprite = 'images/rsz-2.png';
     }
     else if (num === 3) {
-        this.sprite = 'images/3.png';
+        this.sprite = 'images/rsz-3.png';
     }
     else if (num === 4) {
-        this.sprite = 'images/4.png';
+        this.sprite = 'images/rsz-4.png';
     }
     else if (num === 5) {
-        this.sprite = 'images/5.png';
+        this.sprite = 'images/rsz-5.png';
     }
     else if (num === 6) {
-        this.sprite = 'images/6.png';
+        this.sprite = 'images/rsz-6.png';
     }
     else if (num === 7) {
-        this.sprite = 'images/7.png';
+        this.sprite = 'images/rsz-7.png';
     }
     else if (num === 8) {
-        this.sprite = 'images/8.png';
+        this.sprite = 'images/rsz-8.png';
     }
     else if (num === 9) {
-        this.sprite = 'images/9.png';
+        this.sprite = 'images/rsz-9.png';
     }
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //Level display class
 var LevelDisplay = function () {
-    this.x = 30;
-    this.y = 70;
+    this.x = 10;
+    this.y = 30;
 }
 
 LevelDisplay.prototype.render = function (num) {
@@ -248,8 +248,8 @@ LevelDisplay.prototype.render = function (num) {
 
 // Game over display class
 var GameOver = function () {
-    this.x = 250;
-    this.y = 400;
+    this.x = 30;
+    this.y = 120;
 }
 GameOver.prototype.render = function () {
     this.sprite = 'images/gameover.png';
@@ -258,8 +258,8 @@ GameOver.prototype.render = function () {
 
 // Level in display class
 var LevelClear = function () {
-    this.x = 285;
-    this.y = 380;
+    this.x = 30;
+    this.y = 120;
 }
 
 LevelClear.prototype.render = function () {
@@ -284,7 +284,7 @@ var Key = function (x, y) {
     this.y = y;
 }
 Key.prototype.render = function (){
-    this.sprite = 'images/Key.png';
+    this.sprite = 'images/rsz-Key.png';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
@@ -303,7 +303,7 @@ var BlueGem = function (x, y) {
 };
 BlueGem.prototype = Object.create(Gem.prototype);
 BlueGem.prototype.constructor = BlueGem;
-BlueGem.prototype.sprite = 'images/Gem-Blue.png';
+BlueGem.prototype.sprite = 'images/rsz-Gem-Blue.png';
 
 // Hearts that a player can pick up to gain an extra life
 var Heart = function (x, y) {
@@ -311,7 +311,7 @@ var Heart = function (x, y) {
     this.y = y;
 }
 Heart.prototype.render = function (){
-    this.sprite = 'images/Heart.png';
+    this.sprite = 'images/rsz-Heart.png';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
@@ -336,8 +336,8 @@ var NewLevel = function () {
     blueGem2Obtained = 0;
     frozen = 0;
     heartObtained = 0;
-    player.x = 402;
-    player.y = 712;
+    player.x = 203;
+    player.y = 362;
     currentLevel = currentLevel + 1;
     NewKeys();
     NewEnemies();
@@ -386,20 +386,21 @@ var NewKeys =  function () {
 }
 
 var NewEnemies = function () {
-    top1 = new FastEnemy (250, 48, currentLevel);
-    top2 = new FastEnemy (-250, 48, currentLevel);
-    mid1 = new MedEnemy (100, 131, currentLevel);
-    mid2 = new MedEnemy (-200, 131, currentLevel);
-    mid3 = new MedEnemy (-500, 131, currentLevel);
-    bot1 = new SlowEnemy (250, 214, currentLevel);
-    bot2 = new SlowEnemy (-250, 214, currentLevel);
-    top21 = new FastEnemy (400, 380, currentLevel);
-    top22 = new FastEnemy (-100, 380, currentLevel);
-    mid21 = new MedEnemy (250, 463, currentLevel);
-    mid22 = new MedEnemy (-50, 463, currentLevel);
-    mid23 = new MedEnemy (-350, 463, currentLevel);
-    bot21 = new SlowEnemy (200, 546, currentLevel);
-    bot22 = new SlowEnemy (-300, 546, currentLevel);
+    top1 = new FastEnemy (250, 26, currentLevel);
+    top2 = new FastEnemy (-250, 26, currentLevel);
+    mid1 = new MedEnemy (100, 68, currentLevel);
+    mid2 = new MedEnemy (-200, 68, currentLevel);
+    mid3 = new MedEnemy (-500, 68, currentLevel);
+    bot1 = new SlowEnemy (250, 110, currentLevel);
+    bot2 = new SlowEnemy (-250, 110, currentLevel);
+
+    top21 = new FastEnemy (400, 194, currentLevel);
+    top22 = new FastEnemy (-100, 194, currentLevel);
+    mid21 = new MedEnemy (250, 236, currentLevel);
+    mid22 = new MedEnemy (-50, 236, currentLevel);
+    mid23 = new MedEnemy (-350, 236, currentLevel);
+    bot21 = new SlowEnemy (200, 278, currentLevel);
+    bot22 = new SlowEnemy (-3000, 278, currentLevel);
     allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2, top21, top22, mid21, mid22, mid23, bot21, bot22];
 
 }
@@ -425,21 +426,21 @@ var NewHeart = function () {
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
 // the enemy asynchrony. 
 
-var top1 = new FastEnemy (250, 48, currentLevel);
-var top2 = new FastEnemy (-250, 48, currentLevel);
-var mid1 = new MedEnemy (100, 131, currentLevel);
-var mid2 = new MedEnemy (-200, 131, currentLevel);
-var mid3 = new MedEnemy (-500, 131, currentLevel);
-var bot1 = new SlowEnemy (250, 214, currentLevel);
-var bot2 = new SlowEnemy (-250, 214, currentLevel);
+var top1 = new FastEnemy (250, 26, currentLevel);
+var top2 = new FastEnemy (-250, 26, currentLevel);
+var mid1 = new MedEnemy (100, 68, currentLevel);
+var mid2 = new MedEnemy (-200, 68, currentLevel);
+var mid3 = new MedEnemy (-500, 68, currentLevel);
+var bot1 = new SlowEnemy (250, 110, currentLevel);
+var bot2 = new SlowEnemy (-250, 110, currentLevel);
 
-var top21 = new FastEnemy (400, 380, currentLevel);
-var top22 = new FastEnemy (-100, 380, currentLevel);
-var mid21 = new MedEnemy (250, 463, currentLevel);
-var mid22 = new MedEnemy (-50, 463, currentLevel);
-var mid23 = new MedEnemy (-350, 463, currentLevel);
-var bot21 = new SlowEnemy (200, 546, currentLevel);
-var bot22 = new SlowEnemy (-3000, 546, currentLevel);
+var top21 = new FastEnemy (400, 194, currentLevel);
+var top22 = new FastEnemy (-100, 194, currentLevel);
+var mid21 = new MedEnemy (250, 236, currentLevel);
+var mid22 = new MedEnemy (-50, 236, currentLevel);
+var mid23 = new MedEnemy (-350, 236, currentLevel);
+var bot21 = new SlowEnemy (200, 278, currentLevel);
+var bot22 = new SlowEnemy (-3000, 278, currentLevel);
 
 
 
