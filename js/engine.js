@@ -6,7 +6,7 @@
  */
 
 // Global variables relating to game states
-var playerLives = 5;
+var playerLives = 3;
 var playerScore = 0;
 
 var winTrue = 0;
