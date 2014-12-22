@@ -284,7 +284,7 @@ var Key = function (x, y) {
     this.y = y;
 }
 Key.prototype.render = function (){
-    this.sprite = 'images/rsz-Key.png';
+    this.sprite = 'images/rszKey.png';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
@@ -303,7 +303,7 @@ var BlueGem = function (x, y) {
 };
 BlueGem.prototype = Object.create(Gem.prototype);
 BlueGem.prototype.constructor = BlueGem;
-BlueGem.prototype.sprite = 'images/rsz-Gem-Blue.png';
+BlueGem.prototype.sprite = 'images/rszGem-Blue.png';
 
 // Hearts that a player can pick up to gain an extra life
 var Heart = function (x, y) {
@@ -311,7 +311,7 @@ var Heart = function (x, y) {
     this.y = y;
 }
 Heart.prototype.render = function (){
-    this.sprite = 'images/rsz-Heart.png';
+    this.sprite = 'images/rszHeart.png';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
@@ -400,7 +400,7 @@ var NewEnemies = function () {
     mid22 = new MedEnemy (-50, 236, currentLevel);
     mid23 = new MedEnemy (-350, 236, currentLevel);
     bot21 = new SlowEnemy (200, 278, currentLevel);
-    bot22 = new SlowEnemy (-3000, 278, currentLevel);
+    bot22 = new SlowEnemy (-300, 278, currentLevel);
     allEnemies = [top1, top2, mid1, mid2, mid3, bot1, bot2, top21, top22, mid21, mid22, mid23, bot21, bot22];
 
 }
@@ -447,7 +447,7 @@ var mid21 = new MedEnemy (250, 236, currentLevel);
 var mid22 = new MedEnemy (-50, 236, currentLevel);
 var mid23 = new MedEnemy (-350, 236, currentLevel);
 var bot21 = new SlowEnemy (200, 278, currentLevel);
-var bot22 = new SlowEnemy (-3000, 278, currentLevel);
+var bot22 = new SlowEnemy (-300, 278, currentLevel);
 
 
 
