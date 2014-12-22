@@ -102,10 +102,10 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     
     // This checks to see if the player is in the top/winning row
-    if (this.y < 40) {
+    if (this.y < 25) {
         winTrue = 1;
     }
-    if (this.y > 40) {
+    if (this.y > 25) {
         winTrue = 0;
     }
     
