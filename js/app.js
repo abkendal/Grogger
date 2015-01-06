@@ -345,7 +345,7 @@ var NewLevel = function () {
     NewHeart();
 } 
 
-// Sets new key locations
+// Sets new key locations for new level
 var NewKeys =  function () {
     randx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     keyx = -1 + (randx * 51);
@@ -385,6 +385,7 @@ var NewKeys =  function () {
     gamekey6 = new Key(keyx6, keyy6);
 }
 
+//Creates the new enemies for the new level
 var NewEnemies = function () {
     top1 = new FastEnemy (250, 26, currentLevel);
     top2 = new FastEnemy (-250, 26, currentLevel);
@@ -405,6 +406,7 @@ var NewEnemies = function () {
 
 }
 
+// Creates the new gems for the new level
 var NewGems = function () {
     bgrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     bgx = -1 + (bgrandx * 51);
@@ -421,6 +423,7 @@ var NewGems = function () {
     bluegem2 = new BlueGem(bg2x, bg2y);
 }
 
+// Creates a new  heart for the new level
 var NewHeart = function () {
     hrandx = Math.floor(Math.random() * (8 - 0 + 1)) + 0; 
     heartx = -1 + (hrandx * 51);
@@ -429,6 +432,7 @@ var NewHeart = function () {
     var heart = new Heart(heartx, hearty);
 
 }
+
 // Now instantiate your objects.
 // Each enemy has a variable starting location. The variation in x axis starting locations creates
 // the enemy asynchrony. 
